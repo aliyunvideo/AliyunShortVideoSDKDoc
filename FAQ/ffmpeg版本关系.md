@@ -4,6 +4,9 @@
 ## Android
 | AlivcFFmpeg版本 | 短视频SDK版本 | 播放器SDK版本 | 备注  |
 | -------- | -------- | -------- | ----- |
+| com.aliyun.video.android:AlivcFFmpeg:4.3.2.1 | >= v3.27.0   |   ≥ v5.4.5.0  | 共用  |
+| com.aliyun.video.android:AlivcFFmpeg:4.3.2.0-part | >= v3.27.0   |   不适用  | 短视频专用(较小)  |
+| com.aliyun.video.android:AlivcFFmpeg:4.3.2 | >= v3.26.0   |   ≥ v5.4.4.0  | 共用  |
 | com.aliyun.video.android:AlivcFFmpeg:4.3.1.1-part | >= v3.27.0   |   不适用  | 短视频专用(较小)  |
 | com.aliyun.video.android:AlivcFFmpeg:4.3.1-part | >= v3.26.0   |   不适用  | 短视频专用(较小)  |
 | com.aliyun.video.android:AlivcFFmpeg:4.3.0-part | >= v3.25.0   |   不适用  | 短视频专用(较小)  |
@@ -15,6 +18,8 @@
 
 | AlivcFFmpeg版本 | 短视频SDK版本 | 播放器SDK版本 | 备注  |
 | -------- | -------- | -------- | ----- |
+| pod 'QuCore-ThirdParty', '4.3.2 |  >= v3.27.0   |  >= v5.4.4.0    |   共用  |
+| pod 'QuCore-ThirdParty', '4.3.1 |  >= v3.26.0   |  >= v5.4.2.0    |   共用  |
 | pod 'QuCore-ThirdParty', '4.3.0 |  >= v3.24.0   |  >= v5.4.2.0    |   共用  |
 | pod 'QuCore-ThirdParty', '3.15.0  |   < v3.24.0  |  < v5.4.2.0  |  共用   |
 

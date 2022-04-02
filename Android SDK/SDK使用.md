@@ -9,12 +9,15 @@
 
 SDK的核心类为AlickSdkCore， 它是SDK功能的总入口，并提供相应的调试开关，供开发者使用。
 
+在使用SDK前，必须先申请License，详细参考：[License使用指南](../License使用指南/README.md) 及 [工程配置](./工程配置.md#license配置)
+
 ## 初始化
 
 在使用SDK前，必须进行如下初始化操作
 
 ```Java
-AlivcSdkCore.register(Context context)
+bool result = AlivcSdkCore.register(Context context)
+//如果reuslt返回false，表示license初始化失败，请检查license配置是否正常
 ```
 
 ## 日志
