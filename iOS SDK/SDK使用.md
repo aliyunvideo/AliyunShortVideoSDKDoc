@@ -11,21 +11,14 @@
 ## 初始化
 短视频SDK服务需要开通License，开通方式请参见[License](../License使用指南/README.md)使用指南。
 开通License后,请确保提交的bundle id和XCode中对应配置保持一致，开通成功后会获得`LicenseKey`和`LicenseFile`。
+> 注意：请先参考 [集成SDK](./工程配置.md) 中的 **License配置** 进行配置。
+
 ### 初始化接口
 ```Objective-c
-// 其中LicenseKey和LicenseFile是您开通后获得的。
-[AliyunVideoSDKInfo registerSDKWithLicenseKey:LicenseKey licenseFile:LicenseFile];
+NSError *error = [AliyunVideoSDKInfo registerSDK]; // 返回error为nil表示注册成功
+// 因为注册失败基本属于接入错误，所以建议直接加上Assert就可以在接入调试时显示错误和修复建议
+NSAssert2(error == nil, @"注册SDK失败！%@；%@", error.localizedDescription, error.localizedRecoverySuggestion);
 ```
-### 初始化结束通知
-> 注意：初始化成功代表License已经注入到SDK内部，不代表鉴权结果成功
-* 方式一
-  * 成功：`AliyunVideoDidRegistedSuccessNotification`
-  * 失败：`AliyunVideoDidRegistedFailNotification`
-    * 失败原因：`AliyunVideoRegistedFailReasonKey`(userInfoKey)
-* 方式二
-  * 初始化结束（包括成功或失败）：`AliyunVideoLicenseInitFinishNotification`
-    * 初始化结果：`AliyunVideoLicenseInitResultKey`(userInfokey)
-      * 初始化结果是一个`AliyunVideoLicenseInitResult`对象。
 ## License管理
 您可以通过代码查询当前License状态信息，如果你续费了或者购买了增值服务也可以主动及时去更新License（默认15分钟检查更新）。
 ### 获取当前状态
@@ -47,6 +40,11 @@
 [AliyunVideoLicenseManager Refresh:^(AliyunVideoLicenseRefreshCode code){
     // 更新结果: code
 }];
+```
+### 监听鉴权结果
+在您使用具体功能或增值服务时，SDK内部会发生鉴权，如果鉴权失败会在对应的接口返回结果。您也可以在统一的地方监听鉴权结果：
+```Objective-c
+AliyunVideoLicenseManager.EventDelegate = self; // 具体参考AliyunVideoLicenseEventDelegate协议说明
 ```
 ### 主动查询鉴权结果
 ```Objective-c
